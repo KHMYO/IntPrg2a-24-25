@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<p>
+    Deneme action için view
+</p>
+
+<div>
+    <p>
+        @{
+            var sayi = new Random().Next(10, 30);
+            //var s = sayi + 10;
+        }
+        <b>@sayi</b>
+        <br />
+        <span>@(sayi + 10)</span>
+    </p>
+</div>
+<div>
+    <ul>
+        @{
+            var r = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                <li>
+                    <b>@(i + 1).  :  </b>
+                    @r.Next(10, 40)
+                </li>
+            }
+        }
+    </ul>
+</div>

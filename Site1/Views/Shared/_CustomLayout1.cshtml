@@ -1,0 +1,17 @@
+﻿<html>
+<head>
+    @RenderSection("MyStyle",true)
+</head>
+<body>
+    <div>
+        <h1>
+            Custom Layout 1
+        </h1>
+    </div>
+    <div>
+        <!-- Page content goes here -->
+        @RenderBody()
+    </div>
+    @RenderSection("MyScript",false)
+</body>
+</html>
