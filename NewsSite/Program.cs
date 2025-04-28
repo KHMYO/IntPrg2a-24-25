@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Formats.Tar;
 
 namespace NewsSite
@@ -10,6 +11,26 @@ namespace NewsSite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(
+                                opt =>
+                                {
+                                    opt.LoginPath = "/Account/Login";
+                                    opt.LogoutPath = "/Account/Logout";
+                                    opt.AccessDeniedPath = "/Account/AccessDenied";
+                                    opt.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                                    opt.SlidingExpiration = true;
+                                    opt.Cookie.Name = "SinginCookie";
+
+                                }
+                               );
+
+
+
+
+
 
             var app = builder.Build();
 
@@ -32,29 +53,30 @@ namespace NewsSite
             //app.MapControllerRoute(
             //    name: "default",
             //    pattern: "{controller=Home}/{action=Index}/{id?}");
-           
+
             // EÐER UYGULAMADA BÝRDEN ÇOK ROUTE KULANILACAKSA BÖYLE YAZILMALIDIR
-            app.UseEndpoints(endspoints => {
+            app.UseEndpoints(endspoints =>
+            {
 
                 endspoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Staff}/{action=index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
 
                 endspoints.MapControllerRoute(
                     name: "contact",
                     pattern: "iletisim",
-                    defaults: new {controller = "Home", action ="contact"});
+                    defaults: new { controller = "Home", action = "contact" });
 
                 endspoints.MapControllerRoute(
-                    name:"tekhaber",
-                    pattern:"haber/{title}/{no}",
-                    defaults: new {controller = "News",action="OneNews"});
+                    name: "tekhaber",
+                    pattern: "haber/{title}/{no}",
+                    defaults: new { controller = "News", action = "OneNews" });
 
-                    
-            
-            
+
+
+
             });
-            
+
 
 
 

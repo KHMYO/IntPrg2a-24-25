@@ -36,6 +36,18 @@
     <link rel="stylesheet" href="/ui/css/style.css">
 </head>
 <body>
+    <h1>
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <text>Welcome, @User.Identity.Name!</text>
+            }
+            else
+            {
+                <text>Please log in to access the site.</text>
+            }
+        }
+    </h1>
     <div class="trending-bar-dark hidden-xs">
         <div class="container">
             <div class="row">
