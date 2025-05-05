@@ -57,10 +57,15 @@ namespace NewsSite
             // EÐER UYGULAMADA BÝRDEN ÇOK ROUTE KULANILACAKSA BÖYLE YAZILMALIDIR
             app.UseEndpoints(endspoints =>
             {
+                endspoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  
+                  );
 
                 endspoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endspoints.MapControllerRoute(
                     name: "contact",
@@ -71,9 +76,6 @@ namespace NewsSite
                     name: "tekhaber",
                     pattern: "haber/{title}/{no}",
                     defaults: new { controller = "News", action = "OneNews" });
-
-
-
 
             });
 

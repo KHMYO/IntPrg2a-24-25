@@ -135,14 +135,14 @@
 
 
                         <li>
-                            <a class="sidenav-item-link" asp-controller="ManagementStaff" asp-action="index">
+                            <a class="sidenav-item-link" asp-controller="Staff" asp-action="index" asp-area="Management">
                                 <i class="mdi mdi-account-multiple"></i>
                                 <span class="nav-text">Staffs</span>
                             </a>
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" asp-controller="ManagementCategory" asp-action="index">
+                            <a class="sidenav-item-link" href="@Url.Action("index","Category",new {area="Management"})">
                                 <i class="mdi mdi-file-cabinet"></i>
                                 <span class="nav-text">Categories</span>
                             </a>
