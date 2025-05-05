@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="/ui/css/style.css">
 </head>
 <body>
-    <h1>
+    @* <h1>
         @{
             if (User.Identity.IsAuthenticated)
             {
@@ -47,7 +47,9 @@
                 <text>Please log in to access the site.</text>
             }
         }
-    </h1>
+    </h1> *@
+
+    @Html.Partial("_LoginIndicator")
     <div class="trending-bar-dark hidden-xs">
         <div class="container">
             <div class="row">
