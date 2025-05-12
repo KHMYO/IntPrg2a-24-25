@@ -29,12 +29,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="StaffId" class="control-label"></label>
-                <select asp-for="StaffId" class ="form-control" asp-items="ViewBag.StaffId"></select>
+                @* <select asp-for="StaffId" class ="form-control" asp-items="ViewBag.StaffId"></select> *@
+                <input type="hidden" asp-for="StaffId" value="@User.FindFirst("Id").Value.ToString()" />
+                <span>@User.FindFirst("Fullname").Value.ToString()</span>
             </div>
             <div class="form-group">
-                <label asp-for="CreateDate" class="control-label"></label>
+                @* <label asp-for="CreateDate" class="control-label"></label>
                 <input asp-for="CreateDate" class="form-control" />
-                <span asp-validation-for="CreateDate" class="text-danger"></span>
+                <span asp-validation-for="CreateDate" class="text-danger"></span> *@
+
+                <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("dd.MM.yyyy hh:mm")" />
+                @DateTime.Now.ToString("dd.MM.yyyy hh:mm")
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

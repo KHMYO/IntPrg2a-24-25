@@ -1,0 +1,37 @@
+﻿@model IEnumerable<NewsSite.Models.News>
+
+@{
+    Layout = "_UserLayout1";
+}
+
+
+@{
+    if (Model is null || Model.Count() == 0)
+    {
+        <div>
+            Bu kategoriye ait herhangi bir haber bulunamadı!
+        </div>
+    }
+    else
+    {
+
+        foreach (var news in Model)
+        {
+
+            <div>
+                <p>
+                    <b>Başlık : </b> @news.Title
+                </p>
+                <p>
+                    @news.Content
+                </p>
+                <p>
+                    <b> Yazar : </b> @news.Staff.Name
+                    <b>Tarih :</b> @news.CreateDate
+                </p>
+            </div>
+            <hr />
+        }
+    }
+
+}

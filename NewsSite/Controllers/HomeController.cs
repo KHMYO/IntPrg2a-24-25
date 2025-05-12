@@ -7,14 +7,25 @@ namespace NewsSite.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly MyContext context;   
 
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
+        context = new MyContext();
     }
 
     public IActionResult Index()
     {
+
+        var allCategories = context.Categories.ToList();   
+        allCategories=allCategories.Where(x=>x.IsActive==1 && x.Menu==1).ToList();
+
+        ViewBag.MenuCategories = allCategories;
+
+
+
+
         return View();
     }
 

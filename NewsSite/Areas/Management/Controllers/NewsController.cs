@@ -14,9 +14,9 @@ namespace NewsSite.Areas.Management.Controllers
     {
         private readonly MyContext _context;
 
-        public NewsController(MyContext context)
+        public NewsController()
         {
-            _context = context;
+            _context = new MyContext();
         }
 
         // GET: Management/News
@@ -49,7 +49,7 @@ namespace NewsSite.Areas.Management.Controllers
         // GET: Management/News/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             ViewData["StaffId"] = new SelectList(_context.Staff, "Id", "Id");
             return View();
         }
